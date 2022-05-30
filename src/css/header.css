@@ -1,0 +1,25 @@
+.header {
+	padding: 18px 18px 18px 18px;
+	background-color: #333;
+}
+
+.logoZe {
+	width: 250px;
+	height: 80px;
+	object-fit: fill;
+}
+
+.enterBtn {
+	margin: 18px 18px 18px 18px;
+	height: 48px;
+  border: 1px solid rgb(255, 204, 0);
+	border-radius: 24px;
+	font-size: 12px;
+  background-color: #333;
+  color: rgb(255, 204, 0);
+}
+
+.spacing {
+	display: flex;
+	justify-content: space-around;
+}

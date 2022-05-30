@@ -1,0 +1,19 @@
+.configIndex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.colorText {
+	color: #333;
+	font-size: 36px;
+}
+
+.heightIndex {
+	height: 800px;
+}
+
+.searchField {
+	width: 30% !important;
+}
