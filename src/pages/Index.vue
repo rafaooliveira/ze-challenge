@@ -25,6 +25,8 @@ div
 <script>
 import SearchLocation from '../components/homePage/SearchLocation.vue'
 import Info from '../components/homePage/Info.vue'
+import { request, gql } from 'graphql-request'
+
 export default {
   name: 'Home',
   components: {
@@ -33,7 +35,9 @@ export default {
   },
   data () {
     return {
-      paramSearch: ''
+      paramSearch: '',
+      query: '',
+      endpoint: ''
     }
   },
   watch: {
@@ -49,15 +53,30 @@ export default {
     },
     getCurrentLocation () {
       console.log('teste')
+    },
+    async getDistribuitor () {
+      this.query = gql`
+        query PocSearch($pocSearchLong: String!, $pocSearchLat: String!) {
+          pocSearch(long: $pocSearchLong, lat: $pocSearchLat) {
+            id
+            status
+            name
+          }
+        }`
+      this.endpoint = 'https://frontend-code-challenge-api.ze.delivery/graphql'
+      try {
+        const response = await request(this.endpoint, this.query, {
+          pocSearchLat: '-23.632919',
+          pocSearchLong: '-46.709453'
+        })
+        console.log('response', response.pocSearch)
+      } catch (error) {
+        console.log('error', error)
+      }
     }
   },
   mounted () {
-    try {
-      const response = 'https://frontend-code-challenge-api.ze.delivery/graphql'
-      console.log(response)
-    } catch (e) {
-      console.log(e)
-    }
+    this.getDistribuitor()
   }
 }
 </script>
