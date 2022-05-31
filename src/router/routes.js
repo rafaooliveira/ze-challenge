@@ -8,7 +8,7 @@ const routes = [
     ]
   },
   {
-    path: '/mapa',
+    path: '/map',
     component: () => import('pages/Map.vue')
   },
   {
