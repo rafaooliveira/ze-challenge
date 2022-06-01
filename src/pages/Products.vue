@@ -1,8 +1,8 @@
 <template lang="pug">
 div
-  Header
-  q-card.q-pt-xl
-    q-list.row.justify-center
+  Header.q-mb-xl
+  q-card.q-py-xl
+    q-list.row.justify-center.q-my-md
       q-btn.q-mx-sm(
         outlined
         label='Todos'
