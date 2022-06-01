@@ -3,6 +3,11 @@ div
   Header
   q-card.q-pt-xl
     q-list.row.justify-center
+      q-btn.q-mx-sm(
+        outlined
+        label='Todos'
+        @click="allProducts()"
+      )
       div(
         v-for="item in dataCategories" :key="item.id"
       )
@@ -53,11 +58,15 @@ export default {
       queryCategories: '',
       dataProducts: [],
       dataProductsFilter: [],
+      dataProductsAux: [],
       dataCategories: [],
       params: ''
     }
   },
   methods: {
+    allProducts () {
+      this.dataProducts = this.dataProductsAux
+    },
     async filterCategory (filter) {
       this.dataProducts = this.dataProductsFilter.filter((productFiltred) => {
         return productFiltred.category.id === filter
@@ -95,6 +104,7 @@ export default {
         })
         this.dataProducts = responseProducts?.poc?.products
         this.dataProductsFilter = responseProducts?.poc?.products
+        this.dataProductsAux = responseProducts?.poc?.products
         this.listCategories()
       } catch (error) {
         this.$q.notify({
