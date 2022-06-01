@@ -11,7 +11,7 @@ div
       label="Confirmar local"
       filled
       rounded
-      @click="openModal(true)"
+      @click="notifyLocation()"
     )
 </template>
 
@@ -25,7 +25,7 @@ div
   bottom: 15vh;
   left: 90vh;
   padding: 10px;
-  z-index: 4000;
+  z-index: 410;
   color: #000;
 }
 </style>
@@ -43,14 +43,6 @@ export default {
       mapa: '',
       positionLocal: null,
       token: 'pk.eyJ1IjoicmFmYW9vbGl2ZWlyYSIsImEiOiJja3YwYXBxMG83a3I1MnFuemdpaXV0dTUxIn0.f_wybQ1DSPkAmzsK-fi8og'
-    }
-  },
-  watch: {
-    latitude: function (val) {
-      console.log('lat', val)
-    },
-    longitude: function (val) {
-      console.log('lng', val)
     }
   },
   created () {
@@ -123,16 +115,12 @@ export default {
       })
       this.setPosition({ coords: { latitude: -23.5428164, longitude: -46.6416237 } })
     },
-    async openModal () {
-      try {
-        const response = this.$axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/Brasil.json?proximity=${this.latitude},${this.longitude}&access_token=${this.token}`)
-        console.log(response)
-      } catch {
-        this.$q.notify({
-          type: 'negative',
-          message: 'Erro ao encontrar endereço'
-        })
-      }
+    async notifyLocation () {
+      // const response = await this.$axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/Brasil.json?proximity=${this.latitude},${this.longitude}&access_token=${this.token}`)
+      this.$q.notify({
+        type: 'warning',
+        message: 'Nova feature em breve...'
+      })
     }
   }
 }

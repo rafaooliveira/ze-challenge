@@ -12,6 +12,10 @@ const routes = [
     component: () => import('pages/Map.vue')
   },
   {
+    path: '/products',
+    component: () => import('pages/Products.vue')
+  },
+  {
     path: '*',
     component: () => import('pages/Error404.vue')
   }

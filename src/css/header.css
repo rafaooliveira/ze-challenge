@@ -23,3 +23,10 @@
 	display: flex;
 	justify-content: space-around;
 }
+.spacingCustom {
+	display: flex;
+	align-items: flex-start;
+}
+.buttons {
+	order: 1
+}
